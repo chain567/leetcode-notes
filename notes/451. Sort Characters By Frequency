@@ -1,0 +1,54 @@
+# [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
+**Level**：
+Medium
+
+**Topics**： 
+Hash Table
+String
+Sorting
+Heap (Priority Queue)
+Bucket Sort
+Counting
+
+**First AC**：  
+Oct 20, 2026
+
+## Idea
+s = "tree"
+maxheap = [(2,e), (1, r), (1, t)] in the form of `(count, ele)`
+ans = ""
+
+Heapify the elements,
+```
+while maxheap:
+    c, ele = heappop()
+```
+
+add c back to `ans`
+```
+    while c > 0:
+        ans += ele
+        c- -= 1
+```
+
+Loop until there is nothing in the array:
+    - after **heappop** the max element, then move the last to the top, and then check the maximum...
+
+
+## Code
+My solution:
+```python
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        count = Counter(s) # or use a for-loop to count
+        max_heap = [(-freq, ele) for ele, freq in count.items()]
+        heapq.heapify(max_heap)
+        ans = ''
+
+        while max_heap:
+            c, ele = heapq.heappop(max_heap)
+            while c < 0: # since it is a min_heap, so the freq/c is added as negative values. min(c) is the max(freq)
+                ans+= ele
+                c += 1
+        return ans
+```
