@@ -4,7 +4,7 @@ Python-first algorithm practice with C++ solutions for selected problems. Notes 
 
 This is a learning repository; solutions are practice artifacts rather than a packaged library.
 
-Problems Solved: <!-- SOL_COUNT --> 87
+Problems Solved: <!-- SOL_COUNT --> 89
 
 ## Explore
 
